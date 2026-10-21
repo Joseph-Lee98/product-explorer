@@ -25,7 +25,8 @@
 }
 
 .header-link {
-  cursor: pointer;
+  color: white;
+  text-decoration: none;
 }
 
 .header-link:hover {
