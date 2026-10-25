@@ -6,13 +6,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import { BasketProvider } from "./context/BasketContext.jsx";
+import { ProductsProvider } from "./context/ProductsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <BasketProvider>
-        <App />
-      </BasketProvider>
+      <ProductsProvider>
+        <BasketProvider>
+          <App />
+        </BasketProvider>
+      </ProductsProvider>
     </BrowserRouter>
   </StrictMode>,
 );
