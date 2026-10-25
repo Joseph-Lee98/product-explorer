@@ -1,7 +1,19 @@
 import { Link } from "react-router";
 import "./ProductCard.css";
+import { useBasket } from "../../context/BasketContext";
 
 export default function ProductCard({ id, title, price, thumbnail }) {
+  const { basket, setBasket } = useBasket();
+  const isInBasket = basket.some((item) => item.id === id);
+  const addToBasketHandler = () => {
+    setBasket([
+      ...basket,
+      {
+        id,
+        quantity: 1,
+      },
+    ]);
+  };
   return (
     <article className="product-card">
       <div className="product-card-image-container">
@@ -14,9 +26,15 @@ export default function ProductCard({ id, title, price, thumbnail }) {
         <p className="product-card-price">${price.toFixed(2)}</p>
 
         <div className="product-card-actions">
-          <button type="button" className="product-card-basket-button">
-            Add to Basket
-          </button>
+          {!isInBasket && (
+            <button
+              type="button"
+              className="product-card-basket-button"
+              onClick={addToBasketHandler}
+            >
+              Add to Basket
+            </button>
+          )}
 
           <Link to={`/products/${id}`} className="product-card-details-button">
             View Product
