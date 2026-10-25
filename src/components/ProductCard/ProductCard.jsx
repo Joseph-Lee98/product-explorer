@@ -11,6 +11,9 @@ export default function ProductCard({ id, title, price, thumbnail }) {
       {
         id,
         quantity: 1,
+        title,
+        price,
+        thumbnail,
       },
     ]);
   };
